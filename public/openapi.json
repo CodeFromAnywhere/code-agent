@@ -1,0 +1,80 @@
+{
+  "$schema": "https://spec.actionschema.com/openapi.json",
+  "x-actionschema": "0.0.1",
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Code Agent",
+    "version": "1.0.0",
+    "description": "Agent that can look up a definition and write code for it."
+  },
+  "servers": [{ "url": "https://code-agent.actionschema.com" }],
+  "paths": {
+    "/fetch-url": {
+      "get": {
+        "summary": "Fetch content from a URL",
+        "description": "Fetches content from the specified URL and returns it with the appropriate content type",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The URL to fetch content from"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "No URL specified",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/system.md": {
+      "get": {
+        "summary": "Get system information",
+        "description": "Retrieves system information in Markdown format",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
