@@ -7,10 +7,11 @@
     "version": "1.0.0",
     "description": "Agent that can look up a definition and write code for it."
   },
-  "servers": [{ "url": "https://code-agent.actionschema.com" }],
+  "servers": [{ "url": "https://openapi-code-agent.vercel.app" }],
   "paths": {
-    "/fetch-url": {
+    "/api/fetch-url": {
       "get": {
+        "operationId": "fetchUrl",
         "summary": "Fetch content from a URL",
         "description": "Fetches content from the specified URL and returns it with the appropriate content type",
         "parameters": [
