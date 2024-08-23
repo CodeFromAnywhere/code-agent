@@ -61,6 +61,7 @@
     },
     "/system.md": {
       "get": {
+        "operationId": "getSystemPrompt",
         "summary": "Get system information",
         "description": "Retrieves system information in Markdown format",
         "responses": {
